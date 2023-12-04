@@ -1,0 +1,5 @@
+httpx~=0.25
+click~=8.1
+mangum~=0.17
+litestar[standard]~=2.4
+rich~=13.7

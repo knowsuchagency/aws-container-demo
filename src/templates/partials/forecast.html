@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+        Forecast
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ weatherDesc[0].value }}</h5>
+        <p class="card-text">
+            <strong>Temperature:</strong> {{ temp_C }}°C / {{ temp_F }}°F<br>
+            <strong>Feels Like:</strong> {{ FeelsLikeC }}°C / {{ FeelsLikeF }}°F<br>
+            <strong>Humidity:</strong> {{ humidity }}%<br>
+            <strong>Pressure:</strong> {{ pressure }} hPa / {{ pressureInches }} in<br>
+            <strong>Wind:</strong> {{ winddir16Point }} at {{ windspeedKmph }} km/h ({{ windspeedMiles }} mph)<br>
+            <strong>Cloud Cover:</strong> {{ cloudcover }}%<br>
+            <strong>Visibility:</strong> {{ visibility }} km ({{ visibilityMiles }} miles)<br>
+            <strong>UV Index:</strong> {{ uvIndex }}<br>
+            <strong>Precipitation:</strong> {{ precipMM }} mm ({{ precipInches }} inches)<br>
+            <strong>Observation Time:</strong> {{ localObsDateTime }}<br>
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+        Last updated: {{ observation_time }}
+    </div>
+</div>
