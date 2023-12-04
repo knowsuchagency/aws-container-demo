@@ -1,4 +1,4 @@
-FROM public.ecr.aws/lambda/python:3.11 as base
+FROM public.ecr.aws/lambda/python:3.11
 
 COPY src/requirements.txt .
 

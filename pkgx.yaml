@@ -1,2 +1,2 @@
 dependencies:
-  python@3.11 cdk just docker
+  python@3.11 npm just docker
