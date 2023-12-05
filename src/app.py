@@ -8,7 +8,7 @@ from starlette.responses import HTMLResponse
 from models import Weather
 from utilities import get_current_weather, get_icon
 
-app = FastAPI()
+app = FastAPI(title="AWS Container Demo")
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 
 
