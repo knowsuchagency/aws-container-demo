@@ -11,8 +11,8 @@ app = FastAPI()
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 
 
-@app.post("/render_weather", response_class=HTMLResponse)
-def render_weather(request: Request, location: str = Form(...)):
+@app.post("/weather", response_class=HTMLResponse)
+def render_weather_html(request: Request, location: str = Form(...)):
     weather = get_current_weather(location)
     return templates.TemplateResponse(
         "partials/weather.html",
