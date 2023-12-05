@@ -13,7 +13,7 @@ templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 
 
 @app.post("/weather", response_class=HTMLResponse)
-def render_weather_html(request: Request, location: str = Form(...)):
+def handle_form(request: Request, location: str = Form(...)):
     weather = get_current_weather(location)
     icon = None
     try:
