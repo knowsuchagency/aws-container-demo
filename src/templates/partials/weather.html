@@ -3,7 +3,7 @@
         Weather
     </div>
     <div class="card-body">
-        <h5 class="card-title">{{ weatherDesc[0].value }}</h5>
+        <h5 class="card-title">{{ weatherDesc[0].value }} {% if icon %} <span><i class="bi-{{ icon }}"></i></span> {% endif %} </h5>
         <p class="card-text">
             <strong>Temperature:</strong> {{ temp_C }}°C / {{ temp_F }}°F<br>
             <strong>Feels Like:</strong> {{ FeelsLikeC }}°C / {{ FeelsLikeF }}°F<br>

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import logging
 import os
 import platform
 
@@ -21,11 +22,21 @@ class AwsContainerDemoStack(cdk.Stack):
             else aws_lambda.Architecture.X86_64
         )
 
+        openai_api_key = os.getenv("OPENAI_API_KEY", "")
+
+        if not openai_api_key:
+            logging.warning("OPENAI_API_KEY not set")
+
+        build_args = {
+            "OPENAI_API_KEY": openai_api_key,
+        }
+
         self.lambda_function = aws_lambda.DockerImageFunction(
             self,
             "AwsContainerDemoFunction",
             code=aws_lambda.DockerImageCode.from_image_asset(
-                directory=os.path.dirname(__file__)
+                directory=os.path.dirname(__file__),
+                build_args=build_args,
             ),
             architecture=architecture,  # noqa
             memory_size=256,
@@ -46,7 +57,10 @@ class AwsContainerDemoStack(cdk.Stack):
         self.container_definition = batch.EcsFargateContainerDefinition(
             self,
             "AwsContainerDemoContainerDefinition",
-            image=ecs.ContainerImage.from_asset(directory=os.path.dirname(__file__)),
+            image=ecs.ContainerImage.from_asset(
+                directory=os.path.dirname(__file__),
+                build_args=build_args,
+            ),
             cpu=0.5,
             memory=cdk.Size.gibibytes(1),
         )

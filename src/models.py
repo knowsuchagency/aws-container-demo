@@ -24,3 +24,7 @@ class Weather(TypedDict):
     winddirDegree: str
     windspeedKmph: str
     windspeedMiles: str
+
+
+class WeatherIcon(TypedDict):
+    bs_icon: str

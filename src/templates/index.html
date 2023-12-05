@@ -18,6 +18,10 @@
       defer
     ></script>
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
   </head>
   <body>
     <div class="container my-4">
@@ -28,6 +32,7 @@
             hx-target="#forecast"
             hx-swap="innerHTML"
             hx-trigger="submit"
+            hx-indicator="#loading"
           >
             <div class="mb-3">
               <input
@@ -40,7 +45,17 @@
             <button type="submit" class="btn btn-primary">Show Weather</button>
           </form>
         </div>
-        <div class="col-md-6" id="forecast"></div>
+        <div class="col-md-6" id="forecast">
+          <div id="loading" class="htmx-indicator">
+            <p class="card-text placeholder-glow">
+              <span class="placeholder col-7"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-6"></span>
+              <span class="placeholder col-8"></span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </body>
