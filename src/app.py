@@ -1,5 +1,4 @@
 import logging
-import os
 from pathlib import Path
 
 from fastapi import FastAPI, Request, Form
@@ -22,8 +21,6 @@ def render_weather_html(request: Request, location: str = Form(...)):
         icon = get_icon(description)["bs_icon"]
     except Exception as e:
         logging.exception(e)
-        if not os.getenv("OPENAI_API_KEY", ""):
-            logging.warning("OPENAI_API_KEY not set")
     return templates.TemplateResponse(
         "partials/weather.html",
         context={"request": request, "icon": icon, **weather},
