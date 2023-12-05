@@ -4,8 +4,16 @@ init:
     pkgx python@3.11 -m venv .venv ; .venv/bin/pip install -r requirements-dev.txt
 
 # run the web server locally
-litestar:
+fastapi:
     #!/bin/zsh
     . .venv/bin/activate
     cd src
-    litestar run --debug --reload
+    uvicorn app:app --reload
+
+# deploy the stack
+deploy:
+    cdk deploy
+
+# get weather via the CLI
+get-weather location="San Francisco":
+    .venv/bin/python src/entrypoint.py "{{location}}"

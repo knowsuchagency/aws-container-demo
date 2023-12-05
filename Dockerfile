@@ -6,4 +6,4 @@ RUN pip install -r requirements.txt
 
 COPY src/ .
 
-ENTRYPOINT [ "./app.py" ]
+ENTRYPOINT [ "./entrypoint.py" ]

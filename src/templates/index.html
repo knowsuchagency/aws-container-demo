@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-md-6 mb-4">
           <form
-            hx-post="/forecast"
+            hx-post="/render_weather"
             hx-target="#forecast"
             hx-swap="innerHTML"
             hx-trigger="submit"
@@ -37,7 +37,7 @@
                 value="San Francisco"
               />
             </div>
-            <button type="submit" class="btn btn-primary">Submit Location</button>
+            <button type="submit" class="btn btn-primary">Show Weather</button>
           </form>
         </div>
         <div class="col-md-6" id="forecast"></div>

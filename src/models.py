@@ -1,8 +1,7 @@
-from typing import TypedDict
+from typing_extensions import TypedDict
 
 
 class Weather(TypedDict):
-    """A weather forecast."""
     FeelsLikeC: str
     FeelsLikeF: str
     cloudcover: str
