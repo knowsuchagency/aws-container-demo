@@ -40,7 +40,7 @@ class AwsContainerDemoStack(cdk.Stack):
             ),
             architecture=architecture,  # noqa
             memory_size=256,
-            timeout=cdk.Duration.seconds(10),
+            timeout=cdk.Duration.seconds(15),
             function_name="aws-container-demo",
         )
 
