@@ -43,7 +43,6 @@ class AwsContainerDemoStack(cdk.Stack):
             value=self.function_url.url,
         )
 
-
         self.container_definition = batch.EcsFargateContainerDefinition(
             self,
             "AwsContainerDemoContainerDefinition",
@@ -51,7 +50,6 @@ class AwsContainerDemoStack(cdk.Stack):
             cpu=0.5,
             memory=cdk.Size.gibibytes(1),
         )
-
 
         self.job_definition = batch.EcsJobDefinition(
             self,
