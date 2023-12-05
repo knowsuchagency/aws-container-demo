@@ -1,58 +1,76 @@
+## Overview
 
-# Welcome to your CDK Python project!
+This repository demonstrates how to build a Docker container for deployment on AWS Lambda and AWS Batch. It showcases a flexible setup where a FastAPI ASGI application can be converted for Lambda execution using Mangum, and also supports direct Lambda invocation.
 
-This is a blank project for CDK development with Python.
+## Features
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+- **AWS Lambda Compatibility:** Run as a web application via FastAPI and Mangum or invoke the Lambda function directly.
+- **AWS Batch Integration:** Utilize AWS Batch for managing and running batch computing workloads.
+- **Docker Support:** Build and deploy using Docker containers.
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+## Prerequisites
 
-To manually create a virtualenv on MacOS and Linux:
+- AWS Account
+- Docker installed
+- Node.js and npm installed
+- Python 3.11
+- AWS CDK
 
-```
-$ python3 -m venv .venv
-```
+## Installation
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+1. **Clone the repository:**
 
-```
-$ source .venv/bin/activate
-```
+   ```bash
+   git clone git@github.com:knowsuchagency/aws-container-demo.git
+   cd aws-container-demo
+   ```
 
-If you are a Windows platform, you would activate the virtualenv like this:
+2. **Initialize the environment:**
 
-```
-% .venv\Scripts\activate.bat
-```
+   Use the `justfile` for environment setup:
 
-Once the virtualenv is activated, you can install the required dependencies.
+   ```bash
+   just init
+   ```
 
-```
-$ pip install -r requirements.txt
-```
+## Usage
 
-At this point you can now synthesize the CloudFormation template for this code.
+### Running Locally
 
-```
-$ cdk synth
-```
+- **Start FastAPI server:**
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
+  ```bash
+  just fastapi
+  ```
 
-## Useful commands
+### Deployment
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
+- **Deploy to AWS:**
 
-Enjoy!
+  ```bash
+  just deploy
+  ```
+
+### Command-Line Interface
+
+- **Get weather information:**
+
+  ```bash
+  just get-weather "your-location"
+  ```
+
+## Repository Structure
+
+- `cdk.py`: Defines the AWS CDK stack for deploying the application.
+- `justfile`: Contains commands for environment setup, local development, and deployment.
+- `Dockerfile`: Specifies the Docker container configuration.
+- `src/`: Contains the source code for the application.
+  - `app.py`: FastAPI application setup.
+  - `entrypoint.py`: Entry point for AWS Lambda and CLI.
+  - `cli.py`: CLI for getting weather information.
+  - `lambda_handler.py`: Lambda handler with Mangum for FastAPI integration.
+
+
+## License
+
+[MIT](LICENSE)
