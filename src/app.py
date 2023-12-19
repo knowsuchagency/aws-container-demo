@@ -1,8 +1,10 @@
+import json
 import logging
 from pathlib import Path
 
 from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
+from loguru import logger
 from starlette.responses import HTMLResponse
 
 from models import Weather
@@ -15,6 +17,7 @@ templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 @app.post("/weather", response_class=HTMLResponse)
 def handle_form(request: Request, location: str = Form(...)):
     weather = get_current_weather(location)
+    logger.info(json.dumps({location: weather}))
     icon = None
     try:
         description = weather["weatherDesc"][0]["value"]
@@ -23,7 +26,7 @@ def handle_form(request: Request, location: str = Form(...)):
         logging.exception(e)
     return templates.TemplateResponse(
         "partials/weather.html",
-        context={"request": request, "icon": icon, **weather},
+        context={"request": request, "icon": icon, "location": location, **weather},
     )
 
 

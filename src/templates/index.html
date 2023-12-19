@@ -34,26 +34,32 @@
             hx-trigger="submit"
             hx-indicator="#loading"
           >
-            <div class="mb-3">
-              <input
-                class="form-control"
-                id="locationInput"
-                name="location"
-                value="San Francisco"
-              />
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    id="locationInput"
+                    name="location"
+                    value="San Francisco"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary">
+                  Show Weather
+                </button>
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary">Show Weather</button>
           </form>
         </div>
-        <div class="col-md-6" id="forecast">
+        <div class="col-md-6">
+          <div id="forecast"></div>
           <div id="loading" class="htmx-indicator">
-            <p class="card-text placeholder-glow">
-              <span class="placeholder col-7"></span>
-              <span class="placeholder col-4"></span>
-              <span class="placeholder col-4"></span>
-              <span class="placeholder col-6"></span>
-              <span class="placeholder col-8"></span>
-            </p>
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
           </div>
         </div>
       </div>
