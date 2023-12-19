@@ -10,4 +10,6 @@ from utilities import get_current_weather
 @click.argument("location")
 def cli(location: str):
     """Get the weather for a location."""
-    rich.print(json.dumps(get_current_weather(location)))
+    weather: dict = get_current_weather(location)
+    weather.update(location=location)
+    rich.print(json.dumps(weather, indent=2))
